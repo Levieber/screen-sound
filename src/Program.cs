@@ -67,7 +67,7 @@ void HandleMenu()
             };
         case 4:
             {
-                EvaluateBand(bands);
+                RateBand(bands);
                 break;
             };
         case 5:
@@ -158,7 +158,7 @@ void ShowBands(List<Band> bands)
     }
 }
 
-void EvaluateBand(List<Band> bands)
+void RateBand(List<Band> bands)
 {
     Console.Clear();
     ShowTitleOption("Avalie uma Banda");
@@ -189,14 +189,15 @@ void EvaluateBand(List<Band> bands)
         return;
     }
 
-    if (!int.TryParse(bandNoteInput, out int bandNote))
+    try
     {
-        Console.WriteLine("A nota tem que ser um número inteiro!");
-        return;
-    };
-
-    band.AddNote(bandNote);
-    Console.WriteLine($"A nota foi registrada com sucesso para a banda {bandNameInput}");
+        band.AddNote(Rating.Parse(bandNoteInput));
+        Console.WriteLine($"A nota foi registrada com sucesso para a banda {bandNameInput}");
+    }
+    catch (ArgumentException ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
 }
 
 void ShowBandDetails(List<Band> bands)
@@ -221,7 +222,7 @@ void ShowBandDetails(List<Band> bands)
         return;
     }
 
-    Console.WriteLine($"A banda {band.Name} contém a média de notas de {band.Average}.");
+    Console.WriteLine($"A banda {band.Name} contém a média de avaliação de {band.Average}.");
 }
 
 ShowMenuOptions();

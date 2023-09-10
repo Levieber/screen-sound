@@ -2,9 +2,9 @@ namespace ScreenSound.Models;
 
 internal class Band {
     private List<Album> albums = new();
-    private List<int> notes = new();
+    private List<Rating> notes = new();
     public string Name { get;  }
-    public double Average => notes.Count != 0 ? notes.Average() : 0;
+    public double Average => notes.Count != 0 ? notes.Average(n => n.Note) : 0;
 
     public Band(string name) {
         Name = name;
@@ -14,7 +14,7 @@ internal class Band {
         albums.Add(album);
     }
 
-    public void AddNote(int note) {
+    public void AddNote(Rating note) {
         notes.Add(note);
     }
 
