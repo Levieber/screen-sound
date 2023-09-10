@@ -1,6 +1,6 @@
 namespace ScreenSound.Models;
 
-class Album
+internal class Album
 {
     private List<Music> musics = new();
     public string Name { get; set; }
