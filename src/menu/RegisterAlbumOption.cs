@@ -25,20 +25,20 @@ internal class RegisterAlbumOption : Option
             return;
         }
 
+        var band = Bands.Find(b => b.Name == bandNameInput);
+
+        if (band is null)
+        {
+            Console.WriteLine($"A banda {bandNameInput} não foi encontrada! Use a opção 2 para visualizar as bandas registradas.");
+            return;
+        }
+
         Console.Write("Digite o nome do álbum: ");
         string? albumNameInput = Console.ReadLine();
 
         if (string.IsNullOrEmpty(albumNameInput))
         {
             Console.WriteLine("Insira o nome da banda!");
-            return;
-        }
-
-        var band = Bands.Find(b => b.Name == bandNameInput);
-
-        if (band is null)
-        {
-            Console.WriteLine($"A banda {bandNameInput} não foi encontrada! Use a opção 2 para visualizar as bandas registradas.");
             return;
         }
 
