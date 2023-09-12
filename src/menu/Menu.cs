@@ -12,7 +12,8 @@ internal class Menu
         menuOptions.Add(2, new RegisterAlbumOption(bands));
         menuOptions.Add(3, new ShowBandsOption(bands));
         menuOptions.Add(4, new RateBandOption(bands));
-        menuOptions.Add(5, new ShowBandDetailsOption(bands));
+        menuOptions.Add(5, new RateAlbumOption(bands));
+        menuOptions.Add(6, new ShowBandDetailsOption(bands));
     }
 
     private static void ShowMenuOptions()
@@ -30,7 +31,8 @@ internal class Menu
         Console.WriteLine("(2): registrar álbum de uma banda");
         Console.WriteLine("(3): mostrar todas as bandas");
         Console.WriteLine("(4): avaliar uma banda");
-        Console.WriteLine("(5): detalhes de uma banda");
+        Console.WriteLine("(5): avaliar um álbum de uma banda");
+        Console.WriteLine("(6): detalhes de uma banda");
         Console.WriteLine("(-1): sair do programa");
 
 

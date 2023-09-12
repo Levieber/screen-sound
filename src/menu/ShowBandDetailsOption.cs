@@ -34,5 +34,11 @@ internal class ShowBandDetailsOption : Option
         }
 
         Console.WriteLine($"A banda {band.Name} contém a média de avaliação de {band.Average}.");
+        Console.WriteLine($"Albuns de {band.Name}:");
+
+        foreach (var album in band.Albums)
+        {
+            Console.WriteLine($"- {album.Name} com média {album.Average};");
+        }
     }
 }

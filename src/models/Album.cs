@@ -1,13 +1,17 @@
 namespace ScreenSound.Models;
 
-internal class Album
+internal class Album : IRateable
 {
+    private List<Rating> notes = new();
     private List<Music> musics = new();
     public string Name { get; set; }
     public Band Creator { get; }
     public int Duration => musics.Sum(m => m.Duration);
 
-    public Album(string name, Band creator) {
+    public double Average => notes.Count != 0 ? notes.Average(n => n.Note) : 0;
+
+    public Album(string name, Band creator)
+    {
         Name = name;
         Creator = creator;
     }
@@ -15,6 +19,11 @@ internal class Album
     public void AddMusic(Music music)
     {
         musics.Add(music);
+    }
+
+    public void AddNote(Rating note)
+    {
+        notes.Add(note);
     }
 
     public void Summary()
